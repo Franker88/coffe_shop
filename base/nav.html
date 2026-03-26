@@ -10,7 +10,8 @@
     <div class="mx-auto">
         <nav class="bg-[#243c5a] flex p-4 text-[#FCFCF0]">
             <div class="flex-8">
-                <a href="{% url 'product_list' %}">Products</a>
+                <a class="px-4" href="{% url 'product_list' %}">Products</a>
+                <a class="px-4" href="{% url 'order' %}">Orders</a>
             </div>
             {% if user.is_authenticated %}
                 <h1 class="text-right flex-2">Hello {{user.username}}</h1>
