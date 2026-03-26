@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -37,7 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
+    'crispy_tailwind',
+    'orders',
     'products',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +60,7 @@ ROOT_URLCONF = 'coffe_shop.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['base'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -66,6 +71,10 @@ TEMPLATES = [
         },
     },
 ]
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = BASE_DIR
 
 WSGI_APPLICATION = 'coffe_shop.wsgi.application'
 
@@ -116,3 +125,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'tailwind'
+
+CRISPY_TEMPLATE_PACK = 'tailwind'
+
+LOGIN_REDIRECT_URL = 'product_list'

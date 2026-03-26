@@ -1,13 +1,33 @@
-{% extends 'base/base.html' %}
+{% extends 'nav.html' %}
 
 {% block content %}
-    <div>
-        <h1>Products</h1>
-        <a href="{% url 'add_product' %}"><h3>+ add new</h3></a>
-    </div>
-    <ul>
-        {% for product in product_list %}
-            <li>{{product.name}}</li>
-        {% endfor%}
-    </ul>
+    <section class="m-8">
+        <div>
+            <h1 class="text-3xl font-bold underline">
+                Products
+            </h1>
+            <a href="{% url 'add_product' %}"><h3>+ add new</h3></a>
+        </div>
+        <div class="grid grid-cols-4 gap-4">
+            {% for product in product_list %}
+                <div class="border border-gray-200 rounded-sm">
+                    <a href="#" class="group block overflow-hidden">
+                        <div class="relative h-120">
+                            {% if product.image %}
+                                <img src="{{ product.image.url }}" alt="{{ product.name }}", class="absolute inset-0 h-full w-full object-cover opacity-100">
+                            {% endif %}
+                        </div>
+
+                        <div class="relative bg-white pt-3">
+                            <h3 class="text-sm text-gray-700 group-hover:underline group-hover:underline-offset-4">
+                            {{product.name}}
+                            </h3>
+
+                            <p class="mt-1.5 tracking-wide text-gray-900">{{product.price}}</p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor%}
+        </div>
+    </section>
 {% endblock %}
